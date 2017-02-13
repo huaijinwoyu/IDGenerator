@@ -5,7 +5,7 @@ package cn.shenqiz.idgenerator;
  * 描述：Twitter开源的分布式ID生成算法
  */
 
-public class SnowFlake implements Id<Long> {
+public class SnowFlake2 implements Id<Long> {
 
     private final long twepoch = 1486915200000L;
     private final long workerIdBits = 0L;
@@ -23,11 +23,11 @@ public class SnowFlake implements Id<Long> {
     private long sequence = 0L;
     private long lastTimestamp = -1L;
 
-    public SnowFlake() {
+    public SnowFlake2() {
         this(0, 0);
     }
 
-    public SnowFlake(long workerId, long datacenterId) {
+    public SnowFlake2(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
         }
@@ -39,9 +39,9 @@ public class SnowFlake implements Id<Long> {
     }
 
     public static void main(String[] args) {
-        SnowFlake snowFlake = new SnowFlake(0, 0);
+        SnowFlake2 snowFlake2 = new SnowFlake2(0, 0);
         for (int i = 0; i < 1000; i++) {
-            long id = snowFlake.nextId();
+            long id = snowFlake2.nextId();
             System.out.println(id);
         }
     }
